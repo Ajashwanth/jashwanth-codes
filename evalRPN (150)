@@ -1,0 +1,35 @@
+class Solution:
+    def evalRPN(self, tokens: List[str]) -> int:
+        stack =[]
+        resu = 0
+        for element in (tokens):
+            match element:
+                case"+":
+                    po1 = int(stack.pop())
+                    po2 = int(stack.pop())
+                    resu = po2 + po1
+                    stack.append(str(resu))
+                case"-":
+                    po1 = int(stack.pop())
+                    po2 = int(stack.pop())
+                    resu = po2 - po1
+                    stack.append(str(resu))
+                case"*":
+                    po1 = int(stack.pop())
+                    po2 = int(stack.pop())
+                    resu = po2 * po1
+                    stack.append(str(resu))
+                case"/":
+                    po1 = float(stack.pop())
+                    po2 = float (stack.pop())
+                    resu = po2 / po1
+                    stack.append(str(int(resu)))
+                case A :
+                    stack.append(element)
+        if (len(stack) == 0) :
+            return  int(resu)
+        else:
+            return int(stack.pop())
+
+
+        
