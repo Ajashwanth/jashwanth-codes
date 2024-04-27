@@ -1,0 +1,18 @@
+graph to list
+
+edge_list = [ ("a","b",2),("b","d",4),("d","e",5),("c","e",1),("c","d",6),("a","c",3)]
+v_set = set()
+tot = 0 
+for eq in edge_list:
+  v_set.add(eq[0])
+  v_set.add(eq[1])
+  
+# print("no of vertces :",len(v_set))
+# print("tot :" , tot)
+
+
+adj_list = {v:[] for v in v_set}
+for eq in edge_list:
+  adj_list[eq[0]].append(eq[1])
+print("adj list:" , adj_list )
+
