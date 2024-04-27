@@ -1,0 +1,28 @@
+class Solution:
+    def characterReplacement(self, s: str, k: int):
+        
+        di={}
+        length=0
+        j=0
+        similar_max=0
+        
+        for i in range(len(s)):
+            
+            if s[i] in di:
+                di[s[i]]=di[s[i]]+1
+            else:
+                di[s[i]]=1
+            similar_max=max(similar_max,di[s[i]])
+
+            while(abs((i-j+1)-(similar_max))>k):
+                if s[j] in di:
+                    di[s[j]]=di[s[j]]-1
+                j=j+1
+                        
+            length=max(length,i-j+1)
+                        
+                
+            
+            
+        return length
+            
