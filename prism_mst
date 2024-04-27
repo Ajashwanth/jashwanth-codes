@@ -1,0 +1,49 @@
+import heapq
+
+
+def prism_mst(graph,start):
+  mst = []
+  visit = set()
+  heap = [(0,start)]
+  while heap:
+    w, v = heapq.heappop(heap)
+    if v not in visit:
+      visit.add(v)
+      mst.append([w,v])
+      for n,nw in graph[v]:
+        if n not in visit:
+          heapq.heappush(heap,(nw,n))
+      
+  return mst
+
+#dirve code
+graph = {
+  'a' : [('b', 2), ('c', 3)],
+  'e' : [('d', 5), ('c', 1)],
+  'd' : [('b', 4), ('e', 5), ('c', 6)],
+  'b' : [('a', 2), ('d', 4)],
+  'c' : [('e', 1), ('d', 6), ('a', 3)]
+}
+
+
+start = "a"
+mstt = prism_mst(graph,start)
+print("mst")
+tot = 0
+for w in mstt:
+  tot += w[0]
+  
+print("mst cost:",tot)
+
+
+print(mstt)
+
+
+
+
+
+
+          
+  
+            
+      
